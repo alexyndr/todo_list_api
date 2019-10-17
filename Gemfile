@@ -9,11 +9,10 @@ gem 'aws-sdk-s3', require: false
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'acts_as_list' # sorting and reordering a number of objects in a list
-gem 'fast_jsonapi' # to read
+gem 'fast_jsonapi' # serializer for json
 gem 'rack-cors' # to read
-gem 'pundit' # to read
-gem 'bcrypt', '~> 3.1.7' # give an authenfication
-# gem 'jwt' # to read
+gem 'pundit' # authorization
+gem 'devise_token_auth'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
