@@ -1,7 +1,5 @@
 class CommentPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
+  def belongs_to_user?
+    @record.task.project.user.eql?(@user)
   end
 end

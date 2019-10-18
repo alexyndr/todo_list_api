@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    belongs_to_user?
   end
 
   def show?
-    false
+    belongs_to_user?
   end
 
   def create?
-    false
+    belongs_to_user?
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    belongs_to_user?
   end
 
   def edit?
@@ -31,19 +31,6 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope.all
-    end
+    belongs_to_user?
   end
 end

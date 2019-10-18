@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 class ProjectPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
+  def belongs_to_user?
+    @record.user.eql?(@user)
   end
 end
