@@ -26,6 +26,14 @@ class ApplicationPolicy
     belongs_to_user?
   end
 
+  def update_position?
+    update?
+  end
+
+  def update_complete?
+    update?
+  end
+
   def edit?
     update?
   end

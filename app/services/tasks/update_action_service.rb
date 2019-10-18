@@ -1,26 +1,22 @@
+# frozen_string_literal: true
+
 class Tasks::UpdateActionService
-  PARAM = {
-    up: 'up',
-    down: 'down',
-    done: 'done'
-  }.freeze
-
   def self.call(task, params)
-    case true
-    when params[:position].present? then position_change(params[:position], task)
-    when params[:done].present? then done(params[:done], task)
-    when !params[:done] && !params[:position] then task.update(params)
-    end
+    position_change(task, params) if params[:position]
+    status_done(task) if params[:done]
+    update_task_name(task, params) unless params[:done] || params[:position]
+    task
   end
 
-  def self.position_change(parameter, task)
-    case parameter
-    when PARAM[:up] then task.move_higher
-    when PARAM[:down] then task.move_lower
-    end
+  def self.update_task_name(task, params)
+    task.update(params)
   end
 
-  def self.done(parameter, task)
-    task.update(done: true) if parameter == PARAM[:done]
+  def self.position_change(task, parameter)
+    task.insert_at(parameter[:position].to_i)
+  end
+
+  def self.status_done(task)
+    task.update(done: true)
   end
 end

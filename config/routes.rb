@@ -6,8 +6,8 @@ Rails.application.routes.draw do
       resources :projects do
         resources :tasks, shallow: true do
           resources :comments
-          patch 'complete', to: 'tasks#update'
-          patch 'position', to: 'tasks#update'
+          patch 'complete', to: 'tasks#update_complete'
+          patch 'position', to: 'tasks#update_position'
         end
       end
     end
