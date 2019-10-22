@@ -1,5 +1,5 @@
 class Api::V1::CommentsController < ApplicationController
-  before_action :authenticate_api_v1_user!
+  before_action :authenticate_user!
   before_action :set_task, only: [:create, :index]
   before_action :set_comment, except: [:create, :index]
 
@@ -41,10 +41,6 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:data).permit(:body, :file)
-  end
-
-  def pundit_user
-    current_api_v1_user
+    params.require(:comment).permit(:body, :file)
   end
 end

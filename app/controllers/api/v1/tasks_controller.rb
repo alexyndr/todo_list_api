@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::TasksController < ApplicationController
-  # before_action :authenticate_api_v1_user!
+  # before_action :authenticate_user!
   before_action :set_task,  except: %i[create index update_position update_complete]
   before_action :set_task_id, only: %i[update_position update_complete]
   before_action :set_project, only: %i[create index]
@@ -81,10 +81,6 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:data).permit(:name, :deadline, :position, :done)
-  end
-
-  def pundit_user
-    current_api_v1_user
+    params.require(:task).permit(:name, :deadline, :position, :done)
   end
 end

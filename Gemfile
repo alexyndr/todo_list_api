@@ -13,12 +13,15 @@ gem 'fast_jsonapi' # serializer for json
 gem 'rack-cors' # to read
 gem 'pundit' # authorization
 gem 'devise_token_auth'
-gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -29,7 +32,7 @@ group :development do
   gem 'rubocop-rspec'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -44,6 +47,3 @@ group :test do
   gem 'simplecov'
   gem 'rspec_junit_formatter'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

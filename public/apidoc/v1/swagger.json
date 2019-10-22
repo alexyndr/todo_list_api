@@ -1,0 +1,276 @@
+{
+  "swagger": "2.0",
+  "basePath": "/api/v1",
+  "info": {
+    "title": "ToDo List API",
+    "version": "v1"
+  },
+  "produces": [
+    "application/vnd.api+json"
+  ],
+  "consumes": [
+    "application/vnd.api+json"
+  ],
+  "securityDefinitions": {
+    "access_token": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "access-token"
+    },
+    "token_type": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "token-type"
+    },
+    "client": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "client"
+    },
+    "uid": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "uid"
+    }
+  },
+  "security": [
+    {
+      "access_token": [
+
+      ],
+      "token_type": [
+
+      ],
+      "client": [
+
+      ],
+      "uid": [
+
+      ]
+    }
+  ],
+  "paths": {
+    "/tasks/{task_id}/comments": {
+      "get": {
+        "summary": "A list of Comment",
+        "tags": [
+          "Comments"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Comment"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a Comment",
+        "tags": [
+          "Comments"
+        ],
+        "responses": {
+          "201": {
+            "description": "create a Comment"
+          }
+        }
+      }
+    },
+    "/comments/{id}": {
+      "delete": {
+        "summary": "Delete the Comment",
+        "tags": [
+          "Comments"
+        ],
+        "responses": {
+          "204": {
+            "description": "return No Content"
+          }
+        }
+      }
+    },
+    "/projects": {
+      "get": {
+        "summary": "A list of Projects",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Projects"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a Project",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "201": {
+            "description": "Create a Project"
+          }
+        }
+      }
+    },
+    "/projects/{id}": {
+      "get": {
+        "summary": "Shows a Project",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "A Project"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Project",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "Update the Project"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete the Project",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "204": {
+            "description": "return No Content"
+          }
+        }
+      }
+    },
+    "/projects/{project_id}/tasks": {
+      "get": {
+        "summary": "A list of Tasks",
+        "tags": [
+          "Tasks"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Tasks"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a Task",
+        "tags": [
+          "Tasks"
+        ],
+        "responses": {
+          "201": {
+            "description": "create a Task"
+          }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "summary": "Show the Task",
+        "tags": [
+          "Tasks"
+        ],
+        "responses": {
+          "200": {
+            "description": "show a Task"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Task",
+        "tags": [
+          "Tasks"
+        ],
+        "responses": {
+          "200": {
+            "description": "Update the Task"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete the Task",
+        "tags": [
+          "Tasks"
+        ],
+        "responses": {
+          "204": {
+            "description": "return No Content"
+          }
+        }
+      }
+    },
+    "/tasks/{task_id}/complete": {
+      "patch": {
+        "summary": "Mark Task as complete",
+        "tags": [
+          "Task: Complete"
+        ],
+        "responses": {
+          "200": {
+            "description": "update Task complete"
+          }
+        }
+      }
+    },
+    "/tasks/{task_id}/position": {
+      "patch": {
+        "summary": "Change Position of Task",
+        "tags": [
+          "Task: Position"
+        ],
+        "responses": {
+          "200": {
+            "description": "update Task position"
+          }
+        }
+      }
+    },
+    "/auth/sign_in": {
+      "post": {
+        "summary": "Sign In",
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Sign In"
+          }
+        }
+      }
+    },
+    "/auth/sign_out": {
+      "delete": {
+        "summary": "Sign Out",
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Sign Out"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "post": {
+        "summary": "Registration",
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Registration"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+  }
+}
