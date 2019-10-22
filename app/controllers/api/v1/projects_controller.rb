@@ -1,9 +1,9 @@
 class Api::V1::ProjectsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_api_v1_user!
   before_action :set_project, except: [:create, :index]
 
   def index
-    projects = current_user.projects
+    projects = current_api_v1_user.projects
     render json: ProjectSerializer.new(projects).serialized_json, status: :ok
   end
 
@@ -12,7 +12,7 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def create
-    project = current_user.projects.new(project_params)
+    project = current_api_v1_user.projects.new(project_params)
     if project.save
       render json: ProjectSerializer.new(project).serialized_json, status: :created
     else
@@ -45,5 +45,9 @@ class Api::V1::ProjectsController < ApplicationController
 
   def project_params
     params.require(:data).permit(:name)
+  end
+
+  def pundit_user
+    current_api_v1_user
   end
 end

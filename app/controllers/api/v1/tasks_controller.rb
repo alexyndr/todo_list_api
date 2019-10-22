@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::TasksController < ApplicationController
-  # before_action :authenticate_user!
+  # before_action :authenticate_api_v1_user!
   before_action :set_task,  except: %i[create index update_position update_complete]
   before_action :set_task_id, only: %i[update_position update_complete]
   before_action :set_project, only: %i[create index]
@@ -24,15 +24,27 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def update
-    update_task
+    if Tasks::UpdateActionService.call(@task, task_params)
+      render json: TaskSerializer.new(@task).serialized_json, status: :ok
+    else
+      render json: @task.errors, status: :unprocessable_entity
+    end
   end
 
   def update_position
-    update_task
+    if Tasks::UpdatePositionActionService.call(@task, task_params)
+      render json: TaskSerializer.new(@task).serialized_json, status: :ok
+    else
+      render json: @task.errors, status: :unprocessable_entity
+    end
   end
 
   def update_complete
-    update_task
+    if Tasks::UpdateCompleteActionService.call(@task, task_params)
+      render json: TaskSerializer.new(@task).serialized_json, status: :ok
+    else
+      render json: @task.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -40,14 +52,6 @@ class Api::V1::TasksController < ApplicationController
   end
 
   private
-
-  def update_task
-    if Tasks::UpdateActionService.call(@task, task_params)
-      render json: TaskSerializer.new(@task).serialized_json, status: :ok
-    else
-      render json: @task.errors, status: :unprocessable_entity
-    end
-  end
 
   def set_task
     @task = Task.find_by(id: params[:id])
@@ -78,5 +82,9 @@ class Api::V1::TasksController < ApplicationController
 
   def task_params
     params.require(:data).permit(:name, :deadline, :position, :done)
+  end
+
+  def pundit_user
+    current_api_v1_user
   end
 end

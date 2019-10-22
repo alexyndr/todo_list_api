@@ -133,6 +133,8 @@ GEM
     jaro_winkler (1.5.3)
     jmespath (1.4.0)
     json (2.2.0)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
     json_matchers (0.11.1)
       json_schema
     json_schema (0.20.8)
@@ -228,6 +230,19 @@ GEM
     rspec-support (3.9.0)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
+    rswag (2.1.1)
+      rswag-api (= 2.1.1)
+      rswag-specs (= 2.1.1)
+      rswag-ui (= 2.1.1)
+    rswag-api (2.1.1)
+      railties (>= 3.1, < 6.1)
+    rswag-specs (2.1.1)
+      activesupport (>= 3.1, < 6.1)
+      json-schema (~> 2.2)
+      railties (>= 3.1, < 6.1)
+    rswag-ui (2.1.1)
+      actionpack (>= 3.1, < 6.1)
+      railties (>= 3.1, < 6.1)
     rubocop (0.75.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -286,7 +301,6 @@ DEPENDENCIES
   active_storage_validations
   acts_as_list
   aws-sdk-s3
-  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
@@ -308,6 +322,7 @@ DEPENDENCIES
   rails (~> 6.0.0)
   rspec-rails (~> 4.0.0.beta2)
   rspec_junit_formatter
+  rswag
   rubocop
   rubocop-rspec
   shoulda-matchers

@@ -13,7 +13,7 @@ gem 'fast_jsonapi' # serializer for json
 gem 'rack-cors' # to read
 gem 'pundit' # authorization
 gem 'devise_token_auth'
-
+gem 'rswag'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
@@ -29,6 +29,7 @@ group :development do
   gem 'rubocop-rspec'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
 
 group :test do
@@ -41,7 +42,6 @@ group :test do
   gem 'pundit-matchers'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rspec_junit_formatter'
 end
 
