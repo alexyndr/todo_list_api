@@ -1,8 +1,14 @@
+# frozen_string_literal: true
+
 require 'swagger_helper'
 
 describe 'Projects' do
   let(:user) { create(:user) }
   let(:tokens) { user.create_new_auth_token }
+
+  after do |example|
+    example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+  end
 
   path '/projects' do
     get 'A list of Projects' do
@@ -18,17 +24,38 @@ describe 'Projects' do
           assert_response_matches_metadata(example.metadata)
         end
       end
+
+      response '401', 'not authorized' do
+        it 'returns error' do |example|
+          get api_v1_projects_path
+
+          assert_response_matches_metadata(example.metadata)
+        end
+      end
     end
   end
 
   path '/projects' do
     post 'Create a Project' do
       tags 'Projects'
+      parameter name: :body, in: :body, required: true, schema: {
+        '$ref' => '#/definitions/project'
+      }
 
       response '201', 'Create a Project' do
         let(:params) { { project: { name: 'Project' } } }
 
         it 'returns the created Projects' do |example|
+          post api_v1_projects_path(params), headers: tokens
+
+          assert_response_matches_metadata(example.metadata)
+        end
+      end
+
+      response '422', 'wrong params' do
+        let(:params) { { project: { name: nil } } }
+
+        it 'returns error' do |example|
           post api_v1_projects_path(params), headers: tokens
 
           assert_response_matches_metadata(example.metadata)
@@ -40,6 +67,7 @@ describe 'Projects' do
   path '/projects/{id}' do
     get 'Shows a Project' do
       tags 'Projects'
+      parameter name: :id, in: :path, type: :string
 
       response '200', 'A Project' do
         let!(:project) { create(:project, user: user) }
@@ -50,12 +78,24 @@ describe 'Projects' do
           assert_response_matches_metadata(example.metadata)
         end
       end
+
+      response '401', 'not authorized' do
+        it 'return error' do |example|
+          get api_v1_project_path(1)
+
+          assert_response_matches_metadata(example.metadata)
+        end
+      end
     end
   end
 
   path '/projects/{id}' do
     put 'Update a Project' do
       tags 'Projects'
+      parameter name: :id, in: :path, type: :string
+      parameter name: :body, in: :body, required: true, schema: {
+        '$ref' => '#/definitions/project'
+      }
 
       response '200', 'Update the Project' do
         let(:params) { { project: { name: 'New Project' } } }
@@ -73,12 +113,21 @@ describe 'Projects' do
   path '/projects/{id}' do
     delete 'Delete the Project' do
       tags 'Projects'
+      parameter name: :id, in: :path, type: :string
 
-      response '204', 'return No Content' do
+      response '200', 'deleted project' do
         let!(:project) { create(:project, user: user) }
 
         it 'delete the Project' do |example|
           delete api_v1_project_path(project.id), headers: tokens
+
+          assert_response_matches_metadata(example.metadata)
+        end
+      end
+
+      response '401', 'not authorized' do
+        it 'return error' do |example|
+          delete api_v1_project_path(1)
 
           assert_response_matches_metadata(example.metadata)
         end

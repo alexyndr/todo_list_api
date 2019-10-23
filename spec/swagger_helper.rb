@@ -23,7 +23,48 @@ RSpec.configure do |config|
         { access_token: [], token_type: [], client: [], uid: [] }
       ],
       paths: {},
-      definitions: {}
+      definitions: {
+        comment: {
+          type: :object,
+          properties: {
+            comment: {
+              type: :object,
+              required: %i[body],
+              properties: {
+                body: { type: :text, example: 'text' },
+                image: { type: :string, example: 'image' }
+              }
+            }
+          }
+        },
+        task: {
+          type: :object,
+          properties: {
+            task: {
+              type: :object,
+              required: %i[name],
+              properties: {
+                name: { type: :string, example: 'string' },
+                deadline: { type: :datetime, example: 'null' },
+                position: { type: :integer, example: '0' },
+                done: { type: :boolean, example: 'false' }
+              }
+            }
+          }
+        },
+        project: {
+          type: :object,
+          required: %i[name],
+          properties: {
+            project: {
+              type: :object,
+              properties: {
+                name: { type: :string, example: 'string' },
+              }
+            }
+          }
+        }
+      }
     }
   }
 end

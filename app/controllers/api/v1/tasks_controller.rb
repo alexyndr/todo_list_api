@@ -11,7 +11,8 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def show
-    render json: TaskSerializer.new(@task).serialized_json, status: :ok
+    task = authorize(find_task)
+    render json: TaskSerializer.new(task).serialized_json, status: :ok
   end
 
   def create
@@ -48,17 +49,24 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def destroy
-    render status: :no_content if @task.destroy
+    @task.destroy
+
+    # render json: { deleted: true }, status: :ok
+    head :no_content
   end
 
   private
+
+  def find_task
+    Task.find(id: params[:id])
+  end
 
   def set_task
     @task = Task.find_by(id: params[:id])
     if @task
       authorize @task
     else
-      render status: :no_content
+      render json: { error: :authorize }, status: :unprocessable_entity
     end
   end
 
@@ -67,7 +75,7 @@ class Api::V1::TasksController < ApplicationController
     if @task
       authorize @task
     else
-      render status: :no_content
+      render json: { error: :authorize }, status: :unprocessable_entity
     end
   end
 
@@ -76,7 +84,7 @@ class Api::V1::TasksController < ApplicationController
     if @project
       authorize @project
     else
-      render status: :no_content
+      render json: { error: :authorize }, status: :unprocessable_entity
     end
   end
 

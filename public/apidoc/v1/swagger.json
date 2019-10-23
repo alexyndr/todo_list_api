@@ -56,9 +56,86 @@
         "tags": [
           "Comments"
         ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
-            "description": "A list of Comment"
+            "description": "A list of Comment",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": "250",
+                    "type": "comment",
+                    "attributes": {
+                      "body": "Body number_1",
+                      "file": {
+                        "name": "file",
+                        "record": {
+                          "id": 250,
+                          "body": "Body number_1",
+                          "created_at": "2019-10-23T07:24:06.065Z",
+                          "updated_at": "2019-10-23T07:24:06.065Z",
+                          "task_id": 1191
+                        }
+                      }
+                    },
+                    "relationships": {
+                      "task": {
+                        "data": {
+                          "id": "1191",
+                          "type": "task"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "251",
+                    "type": "comment",
+                    "attributes": {
+                      "body": "Body number_2",
+                      "file": {
+                        "name": "file",
+                        "record": {
+                          "id": 251,
+                          "body": "Body number_2",
+                          "created_at": "2019-10-23T07:24:06.070Z",
+                          "updated_at": "2019-10-23T07:24:06.070Z",
+                          "task_id": 1191
+                        }
+                      }
+                    },
+                    "relationships": {
+                      "task": {
+                        "data": {
+                          "id": "1191",
+                          "type": "task"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "not authorized",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
           }
         }
       },
@@ -67,9 +144,64 @@
         "tags": [
           "Comments"
         ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/comment"
+            }
+          }
+        ],
         "responses": {
           "201": {
-            "description": "create a Comment"
+            "description": "create a Comment",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "252",
+                  "type": "comment",
+                  "attributes": {
+                    "body": "new comment",
+                    "file": {
+                      "name": "file",
+                      "record": {
+                        "id": 252,
+                        "body": "new comment",
+                        "created_at": "2019-10-23T07:24:06.474Z",
+                        "updated_at": "2019-10-23T07:24:06.474Z",
+                        "task_id": 1193
+                      }
+                    }
+                  },
+                  "relationships": {
+                    "task": {
+                      "data": {
+                        "id": "1193",
+                        "type": "task"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "wrong params",
+            "examples": {
+              "application/json": {
+                "body": [
+                  "can't be blank"
+                ]
+              }
+            }
           }
         }
       }
@@ -80,9 +212,35 @@
         "tags": [
           "Comments"
         ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
         "responses": {
-          "204": {
-            "description": "return No Content"
+          "200": {
+            "description": "deleted comment",
+            "examples": {
+              "application/json": {
+                "deleted": true
+              }
+            }
+          },
+          "401": {
+            "description": "not authorized",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
           }
         }
       }
@@ -95,7 +253,63 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of Projects"
+            "description": "A list of Projects",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": "1437",
+                    "type": "project",
+                    "attributes": {
+                      "name": "Name_6"
+                    },
+                    "relationships": {
+                      "user": {
+                        "data": {
+                          "id": "1615",
+                          "type": "user"
+                        }
+                      },
+                      "tasks": {
+                        "data": [
+
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "id": "1438",
+                    "type": "project",
+                    "attributes": {
+                      "name": "Name_7"
+                    },
+                    "relationships": {
+                      "user": {
+                        "data": {
+                          "id": "1615",
+                          "type": "user"
+                        }
+                      },
+                      "tasks": {
+                        "data": [
+
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "not authorized",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
           }
         }
       },
@@ -104,9 +318,53 @@
         "tags": [
           "Projects"
         ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/project"
+            }
+          }
+        ],
         "responses": {
           "201": {
-            "description": "Create a Project"
+            "description": "Create a Project",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1439",
+                  "type": "project",
+                  "attributes": {
+                    "name": "Project"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "1616",
+                        "type": "user"
+                      }
+                    },
+                    "tasks": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "wrong params",
+            "examples": {
+              "application/json": {
+                "name": [
+                  "can't be blank"
+                ]
+              }
+            }
           }
         }
       }
@@ -117,9 +375,51 @@
         "tags": [
           "Projects"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
-            "description": "A Project"
+            "description": "A Project",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1440",
+                  "type": "project",
+                  "attributes": {
+                    "name": "Name_8"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "1618",
+                        "type": "user"
+                      }
+                    },
+                    "tasks": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "not authorized",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
           }
         }
       },
@@ -128,9 +428,49 @@
         "tags": [
           "Projects"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/project"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Update the Project"
+            "description": "Update the Project",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1441",
+                  "type": "project",
+                  "attributes": {
+                    "name": "New Project"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "1619",
+                        "type": "user"
+                      }
+                    },
+                    "tasks": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -139,9 +479,32 @@
         "tags": [
           "Projects"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
         "responses": {
-          "204": {
-            "description": "return No Content"
+          "200": {
+            "description": "deleted project",
+            "examples": {
+              "application/json": {
+                "deleted": true
+              }
+            }
+          },
+          "401": {
+            "description": "not authorized",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You need to sign in or sign up before continuing."
+                ]
+              }
+            }
           }
         }
       }
@@ -152,9 +515,92 @@
         "tags": [
           "Tasks"
         ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
-            "description": "A list of Tasks"
+            "description": "A list of Tasks",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": "1196",
+                    "type": "task",
+                    "attributes": {
+                      "name": "Name_6",
+                      "deadline": null,
+                      "position": 1,
+                      "done": null
+                    },
+                    "relationships": {
+                      "project": {
+                        "data": {
+                          "id": "1443",
+                          "type": "project"
+                        }
+                      },
+                      "comments": {
+                        "data": [
+
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "id": "1197",
+                    "type": "task",
+                    "attributes": {
+                      "name": "Name_7",
+                      "deadline": null,
+                      "position": 2,
+                      "done": null
+                    },
+                    "relationships": {
+                      "project": {
+                        "data": {
+                          "id": "1443",
+                          "type": "project"
+                        }
+                      },
+                      "comments": {
+                        "data": [
+
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "id": "1198",
+                    "type": "task",
+                    "attributes": {
+                      "name": "Name_8",
+                      "deadline": null,
+                      "position": 3,
+                      "done": null
+                    },
+                    "relationships": {
+                      "project": {
+                        "data": {
+                          "id": "1443",
+                          "type": "project"
+                        }
+                      },
+                      "comments": {
+                        "data": [
+
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
           }
         }
       },
@@ -163,9 +609,62 @@
         "tags": [
           "Tasks"
         ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/task"
+            }
+          }
+        ],
         "responses": {
           "201": {
-            "description": "create a Task"
+            "description": "create a Task",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1200",
+                  "type": "task",
+                  "attributes": {
+                    "name": "Project",
+                    "deadline": null,
+                    "position": 2,
+                    "done": null
+                  },
+                  "relationships": {
+                    "project": {
+                      "data": {
+                        "id": "1444",
+                        "type": "project"
+                      }
+                    },
+                    "comments": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid params",
+            "examples": {
+              "application/json": {
+                "name": [
+                  "can't be blank"
+                ]
+              }
+            }
           }
         }
       }
@@ -176,9 +675,52 @@
         "tags": [
           "Tasks"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
-            "description": "show a Task"
+            "description": "show a Task",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1202",
+                  "type": "task",
+                  "attributes": {
+                    "name": "Name_11",
+                    "deadline": null,
+                    "position": 1,
+                    "done": null
+                  },
+                  "relationships": {
+                    "project": {
+                      "data": {
+                        "id": "1446",
+                        "type": "project"
+                      }
+                    },
+                    "comments": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "unauthorized",
+            "examples": {
+              "application/json": {
+                "error": "authorize"
+              }
+            }
           }
         }
       },
@@ -187,9 +729,75 @@
         "tags": [
           "Tasks"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "task": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "deadline": {
+                      "type": "datetime",
+                      "example": "2019-09-22"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Update the Task"
+            "description": "Update the Task",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1204",
+                  "type": "task",
+                  "attributes": {
+                    "name": "New Task",
+                    "deadline": null,
+                    "position": 1,
+                    "done": null
+                  },
+                  "relationships": {
+                    "project": {
+                      "data": {
+                        "id": "1448",
+                        "type": "project"
+                      }
+                    },
+                    "comments": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "unauthorized",
+            "examples": {
+              "application/json": {
+                "error": "authorize"
+              }
+            }
           }
         }
       },
@@ -198,9 +806,30 @@
         "tags": [
           "Tasks"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
         "responses": {
-          "204": {
-            "description": "return No Content"
+          "200": {
+            "description": "deleted task",
+            "examples": {
+              "application/json": {
+                "deleted": true
+              }
+            }
+          },
+          "422": {
+            "description": "unauthorized",
+            "examples": {
+              "application/json": {
+                "error": "authorize"
+              }
+            }
           }
         }
       }
@@ -211,9 +840,63 @@
         "tags": [
           "Task: Complete"
         ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "task": {
+                  "type": "object",
+                  "properties": {
+                    "done": {
+                      "type": "boolean",
+                      "example": "true"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "update Task complete"
+            "description": "update Task complete",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1208",
+                  "type": "task",
+                  "attributes": {
+                    "name": "Name_17",
+                    "deadline": null,
+                    "position": 1,
+                    "done": true
+                  },
+                  "relationships": {
+                    "project": {
+                      "data": {
+                        "id": "1452",
+                        "type": "project"
+                      }
+                    },
+                    "comments": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -224,9 +907,70 @@
         "tags": [
           "Task: Position"
         ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "task": {
+                  "type": "object",
+                  "properties": {
+                    "position": {
+                      "type": "integer",
+                      "example": "0"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "update Task position"
+            "description": "update Task position",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1209",
+                  "type": "task",
+                  "attributes": {
+                    "name": "Name_18",
+                    "deadline": null,
+                    "position": 4,
+                    "done": null
+                  },
+                  "relationships": {
+                    "project": {
+                      "data": {
+                        "id": "1453",
+                        "type": "project"
+                      }
+                    },
+                    "comments": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid params",
+            "examples": {
+              "application/json": {
+              }
+            }
           }
         }
       }
@@ -237,9 +981,47 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Sign In"
+            "description": "Sign In",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 1633,
+                  "email": "person_24@example.com",
+                  "provider": "email",
+                  "uid": "person_24@example.com"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid login credentials",
+            "examples": {
+              "application/json": {
+                "success": false,
+                "errors": [
+                  "Invalid login credentials. Please try again."
+                ]
+              }
+            }
           }
         }
       }
@@ -250,9 +1032,47 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "token_type",
+            "in": "header",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Sign Out"
+            "description": "Sign Out",
+            "examples": {
+              "application/json": {
+                "success": true
+              }
+            }
+          },
+          "404": {
+            "description": "User was not found or was not logged in",
+            "examples": {
+              "application/json": {
+                "success": false,
+                "errors": [
+                  "User was not found or was not logged in."
+                ]
+              }
+            }
           }
         }
       }
@@ -263,14 +1083,138 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "password_confirmation": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Registration"
+            "description": "Registration",
+            "examples": {
+              "application/json": {
+                "status": "success",
+                "data": {
+                  "id": 1637,
+                  "provider": "email",
+                  "uid": "person_28@example.com",
+                  "email": "person_28@example.com",
+                  "created_at": "2019-10-23T07:24:11.069Z",
+                  "updated_at": "2019-10-23T07:24:11.074Z"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "examples": {
+              "application/json": {
+                "status": "error",
+                "data": {
+                  "id": null,
+                  "provider": "email",
+                  "uid": "",
+                  "email": "1111",
+                  "created_at": null,
+                  "updated_at": null
+                },
+                "errors": {
+                  "email": [
+                    "is not an email"
+                  ],
+                  "full_messages": [
+                    "Email is not an email"
+                  ]
+                }
+              }
+            }
           }
         }
       }
     }
   },
   "definitions": {
+    "comment": {
+      "type": "object",
+      "properties": {
+        "comment": {
+          "type": "object",
+          "required": [
+            "body"
+          ],
+          "properties": {
+            "body": {
+              "type": "text",
+              "example": "text"
+            },
+            "image": {
+              "type": "string",
+              "example": "image"
+            }
+          }
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "string"
+            },
+            "deadline": {
+              "type": "datetime",
+              "example": "null"
+            },
+            "position": {
+              "type": "integer",
+              "example": "0"
+            },
+            "done": {
+              "type": "boolean",
+              "example": "false"
+            }
+          }
+        }
+      }
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "project": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "string"
+            }
+          }
+        }
+      }
+    }
   }
 }

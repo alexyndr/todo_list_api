@@ -8,9 +8,13 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth'
       resources :projects do
         resources :tasks, shallow: true do
+          scope module: :tasks do
+            resources :position, only: :update
+            resources :complete, only: :update
+          end
           resources :comments
-          patch 'complete', to: 'tasks#update_complete'
-          patch 'position', to: 'tasks#update_position'
+          # patch 'complete', to: 'tasks#update_complete'
+          # patch 'position', to: 'tasks#update_position'
         end
       end
     end

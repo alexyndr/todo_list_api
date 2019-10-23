@@ -17,7 +17,7 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def destroy
-    render status: :no_content if @comments.destroy
+    render json: { deleted: true }, status: :ok if @comment.destroy
   end
 
   private
@@ -32,9 +32,9 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def set_comment
-    @comments = Comment.find_by(id: params[:id])
-    if @comments
-      authorize @comments
+    @comment = Comment.find_by(id: params[:id])
+    if @comment
+      authorize @comment
     else
       render status: :no_content
     end

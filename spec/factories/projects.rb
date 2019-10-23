@@ -4,4 +4,8 @@ FactoryBot.define do
       "Name_#{n}"
     end
   end
+
+  trait :user_trait do
+    association :user
+  end
 end

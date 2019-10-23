@@ -7,31 +7,19 @@ class ApplicationPolicy
   end
 
   def index?
-    belongs_to_user?
+    false
   end
 
   def show?
-    belongs_to_user?
+    false
   end
 
   def create?
-    belongs_to_user?
-  end
-
-  def new?
-    create?
+    false
   end
 
   def update?
-    belongs_to_user?
-  end
-
-  def update_position?
-    update?
-  end
-
-  def update_complete?
-    update?
+    false
   end
 
   def edit?
@@ -39,6 +27,6 @@ class ApplicationPolicy
   end
 
   def destroy?
-    belongs_to_user?
+    false
   end
 end

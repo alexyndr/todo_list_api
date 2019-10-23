@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'swagger_helper'
 
 describe 'Comments' do
@@ -6,9 +8,15 @@ describe 'Comments' do
   let(:project) { create(:project, user: user) }
   let(:task) { create(:task, project: project) }
 
+  after do |example|
+    example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+  end
+
   path '/tasks/{task_id}/comments' do
     get 'A list of Comment' do
       tags 'Comments'
+      produces 'application/json'
+      parameter name: :task_id, in: :path, type: :string
 
       response '200', 'A list of Comment' do
         let!(:comment_one) { create(:comment, task: task) }
@@ -20,17 +28,40 @@ describe 'Comments' do
           assert_response_matches_metadata(example.metadata)
         end
       end
+
+      response '401', 'not authorized' do
+
+        it 'returns error' do |example|
+          get api_v1_task_comments_path(task)
+
+          assert_response_matches_metadata(example.metadata)
+        end
+      end
     end
   end
 
   path '/tasks/{task_id}/comments' do
     post 'Create a Comment' do
       tags 'Comments'
+      parameter name: :task_id, in: :path, type: :string
+      parameter name: :body, in: :body, required: true, schema: {
+        '$ref' => '#/definitions/comment'
+      }
 
       response '201', 'create a Comment' do
         let(:params) { { comment: { body: 'new comment' } } }
 
         it 'returns a Comment' do |example|
+          post api_v1_task_comments_path(task), params: params, headers: tokens
+
+          assert_response_matches_metadata(example.metadata)
+        end
+      end
+
+      response '422', 'wrong params' do
+        let(:params) { { comment: { body: nil } } }
+
+        it 'returns error' do |example|
           post api_v1_task_comments_path(task), params: params, headers: tokens
 
           assert_response_matches_metadata(example.metadata)
@@ -42,12 +73,23 @@ describe 'Comments' do
   path '/comments/{id}' do
     delete 'Delete the Comment' do
       tags 'Comments'
+      produces 'application/json'
+      parameter name: :id, in: :path, type: :string
 
-      response '204', 'return No Content' do
+      response '200', 'deleted comment' do
         let(:comment) { create(:comment, task: task) }
 
         it 'delete the Comment' do |example|
-          delete api_v1_comment_path(task), headers: tokens
+          delete api_v1_comment_path(comment), headers: tokens
+
+          assert_response_matches_metadata(example.metadata)
+        end
+      end
+
+      response '401', 'not authorized' do
+
+        it 'return error' do |example|
+          delete api_v1_comment_path(1)
 
           assert_response_matches_metadata(example.metadata)
         end

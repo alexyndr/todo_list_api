@@ -29,7 +29,7 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def destroy
-    render status: :no_content if @project.destroy
+    render json: { deleted: true }, status: :ok if @project.destroy
   end
 
   private

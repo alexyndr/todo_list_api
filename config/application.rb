@@ -35,3 +35,7 @@ module TodoListApi
     config.api_only = true
   end
 end
+
+RSpec.configure do |config|
+  config.swagger_dry_run = false
+end
