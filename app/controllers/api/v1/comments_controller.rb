@@ -1,14 +1,13 @@
 class Api::V1::CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:create, :index]
-  before_action :set_comment, except: [:create, :index]
 
   def index
-    render json: CommentSerializer.new(@task.comments).serialized_json, status: :ok
+    task = authorize(set_task)
+    render json: CommentSerializer.new(task.comments).serialized_json, status: :ok
   end
 
   def create
-    comment = @task.comments.new(comment_params)
+    comment = authorize(set_task).comments.new(comment_params)
     if comment.save
       render json: CommentSerializer.new(comment).serialized_json, status: :created
     else
@@ -17,27 +16,18 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def destroy
-    render json: { deleted: true }, status: :ok if @comment.destroy
+    comment = authorize(set_comment)
+    render json: {}, status: :ok if comment.destroy
   end
 
   private
 
   def set_task
-    @task = Task.find_by(id: params[:task_id])
-    if @task
-      authorize @task
-    else
-      render status: :no_content
-    end
+    Task.find(params[:task_id])
   end
 
   def set_comment
-    @comment = Comment.find_by(id: params[:id])
-    if @comment
-      authorize @comment
-    else
-      render status: :no_content
-    end
+    Comment.find(params[:id])
   end
 
   def comment_params

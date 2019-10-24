@@ -13,8 +13,6 @@ Rails.application.routes.draw do
             resources :complete, only: :update
           end
           resources :comments
-          # patch 'complete', to: 'tasks#update_complete'
-          # patch 'position', to: 'tasks#update_position'
         end
       end
     end

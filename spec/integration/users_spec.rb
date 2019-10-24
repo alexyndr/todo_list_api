@@ -28,6 +28,8 @@ describe 'Authentication' do
         it 'returns a current User' do |example|
           post api_v1_user_session_path(params)
 
+          expect(response).to match_json_schema('user_sign_in')
+
           assert_response_matches_metadata(example.metadata)
         end
       end
@@ -87,6 +89,8 @@ describe 'Authentication' do
 
         it 'returns a registered User' do |example|
           post api_v1_user_registration_path(params)
+
+          expect(response).to match_json_schema('user_registration')
 
           assert_response_matches_metadata(example.metadata)
         end

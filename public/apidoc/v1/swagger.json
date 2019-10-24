@@ -74,50 +74,50 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "250",
+                    "id": "9",
                     "type": "comment",
                     "attributes": {
                       "body": "Body number_1",
                       "file": {
                         "name": "file",
                         "record": {
-                          "id": 250,
+                          "id": 9,
                           "body": "Body number_1",
-                          "created_at": "2019-10-23T07:24:06.065Z",
-                          "updated_at": "2019-10-23T07:24:06.065Z",
-                          "task_id": 1191
+                          "created_at": "2019-10-24T07:09:02.837Z",
+                          "updated_at": "2019-10-24T07:09:02.837Z",
+                          "task_id": 67
                         }
                       }
                     },
                     "relationships": {
                       "task": {
                         "data": {
-                          "id": "1191",
+                          "id": "67",
                           "type": "task"
                         }
                       }
                     }
                   },
                   {
-                    "id": "251",
+                    "id": "10",
                     "type": "comment",
                     "attributes": {
                       "body": "Body number_2",
                       "file": {
                         "name": "file",
                         "record": {
-                          "id": 251,
+                          "id": 10,
                           "body": "Body number_2",
-                          "created_at": "2019-10-23T07:24:06.070Z",
-                          "updated_at": "2019-10-23T07:24:06.070Z",
-                          "task_id": 1191
+                          "created_at": "2019-10-24T07:09:02.841Z",
+                          "updated_at": "2019-10-24T07:09:02.841Z",
+                          "task_id": 67
                         }
                       }
                     },
                     "relationships": {
                       "task": {
                         "data": {
-                          "id": "1191",
+                          "id": "67",
                           "type": "task"
                         }
                       }
@@ -166,25 +166,25 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "252",
+                  "id": "11",
                   "type": "comment",
                   "attributes": {
                     "body": "new comment",
                     "file": {
                       "name": "file",
                       "record": {
-                        "id": 252,
+                        "id": 11,
                         "body": "new comment",
-                        "created_at": "2019-10-23T07:24:06.474Z",
-                        "updated_at": "2019-10-23T07:24:06.474Z",
-                        "task_id": 1193
+                        "created_at": "2019-10-24T07:09:03.237Z",
+                        "updated_at": "2019-10-24T07:09:03.237Z",
+                        "task_id": 69
                       }
                     }
                   },
                   "relationships": {
                     "task": {
                       "data": {
-                        "id": "1193",
+                        "id": "69",
                         "type": "task"
                       }
                     }
@@ -228,7 +228,6 @@
             "description": "deleted comment",
             "examples": {
               "application/json": {
-                "deleted": true
               }
             }
           },
@@ -239,6 +238,154 @@
                 "errors": [
                   "You need to sign in or sign up before continuing."
                 ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{id}/complete": {
+      "patch": {
+        "summary": "Mark Task as complete",
+        "tags": [
+          "Task: Complete"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "task": {
+                  "type": "object",
+                  "properties": {
+                    "done": {
+                      "type": "boolean",
+                      "example": "true"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update Task complete",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "72",
+                  "type": "task",
+                  "attributes": {
+                    "name": "Name_6",
+                    "deadline": null,
+                    "position": 1,
+                    "done": true
+                  },
+                  "relationships": {
+                    "project": {
+                      "data": {
+                        "id": "78",
+                        "type": "project"
+                      }
+                    },
+                    "comments": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid params",
+            "examples": {
+              "application/json": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{id}/position": {
+      "patch": {
+        "summary": "Change Position of Task",
+        "tags": [
+          "Task: Position"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "task": {
+                  "type": "object",
+                  "properties": {
+                    "position": {
+                      "type": "integer",
+                      "example": "0"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update Task position",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "74",
+                  "type": "task",
+                  "attributes": {
+                    "name": "Name_8",
+                    "deadline": null,
+                    "position": 4,
+                    "done": false
+                  },
+                  "relationships": {
+                    "project": {
+                      "data": {
+                        "id": "80",
+                        "type": "project"
+                      }
+                    },
+                    "comments": {
+                      "data": [
+
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid params",
+            "examples": {
+              "application/json": {
               }
             }
           }
@@ -258,15 +405,15 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "1437",
+                    "id": "82",
                     "type": "project",
                     "attributes": {
-                      "name": "Name_6"
+                      "name": "Name_10"
                     },
                     "relationships": {
                       "user": {
                         "data": {
-                          "id": "1615",
+                          "id": "92",
                           "type": "user"
                         }
                       },
@@ -278,15 +425,15 @@
                     }
                   },
                   {
-                    "id": "1438",
+                    "id": "83",
                     "type": "project",
                     "attributes": {
-                      "name": "Name_7"
+                      "name": "Name_11"
                     },
                     "relationships": {
                       "user": {
                         "data": {
-                          "id": "1615",
+                          "id": "92",
                           "type": "user"
                         }
                       },
@@ -334,7 +481,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "1439",
+                  "id": "84",
                   "type": "project",
                   "attributes": {
                     "name": "Project"
@@ -342,7 +489,7 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "1616",
+                        "id": "93",
                         "type": "user"
                       }
                     },
@@ -389,15 +536,15 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "1440",
+                  "id": "85",
                   "type": "project",
                   "attributes": {
-                    "name": "Name_8"
+                    "name": "Name_12"
                   },
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "1618",
+                        "id": "95",
                         "type": "user"
                       }
                     },
@@ -450,7 +597,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "1441",
+                  "id": "86",
                   "type": "project",
                   "attributes": {
                     "name": "New Project"
@@ -458,7 +605,7 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "1619",
+                        "id": "96",
                         "type": "user"
                       }
                     },
@@ -492,7 +639,6 @@
             "description": "deleted project",
             "examples": {
               "application/json": {
-                "deleted": true
               }
             }
           },
@@ -530,18 +676,18 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "1196",
+                    "id": "76",
                     "type": "task",
                     "attributes": {
-                      "name": "Name_6",
+                      "name": "Name_10",
                       "deadline": null,
                       "position": 1,
-                      "done": null
+                      "done": false
                     },
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "1443",
+                          "id": "88",
                           "type": "project"
                         }
                       },
@@ -553,18 +699,18 @@
                     }
                   },
                   {
-                    "id": "1197",
+                    "id": "78",
                     "type": "task",
                     "attributes": {
-                      "name": "Name_7",
+                      "name": "Name_12",
                       "deadline": null,
                       "position": 2,
-                      "done": null
+                      "done": false
                     },
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "1443",
+                          "id": "88",
                           "type": "project"
                         }
                       },
@@ -576,18 +722,18 @@
                     }
                   },
                   {
-                    "id": "1198",
+                    "id": "79",
                     "type": "task",
                     "attributes": {
-                      "name": "Name_8",
+                      "name": "Name_13",
                       "deadline": null,
                       "position": 3,
-                      "done": null
+                      "done": false
                     },
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "1443",
+                          "id": "88",
                           "type": "project"
                         }
                       },
@@ -631,18 +777,18 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "1200",
+                  "id": "82",
                   "type": "task",
                   "attributes": {
                     "name": "Project",
                     "deadline": null,
                     "position": 2,
-                    "done": null
+                    "done": false
                   },
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "1444",
+                        "id": "90",
                         "type": "project"
                       }
                     },
@@ -689,18 +835,18 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "1202",
+                  "id": "85",
                   "type": "task",
                   "attributes": {
-                    "name": "Name_11",
+                    "name": "Name_18",
                     "deadline": null,
                     "position": 1,
-                    "done": null
+                    "done": false
                   },
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "1446",
+                        "id": "94",
                         "type": "project"
                       }
                     },
@@ -714,11 +860,11 @@
               }
             }
           },
-          "422": {
+          "403": {
             "description": "unauthorized",
             "examples": {
               "application/json": {
-                "error": "authorize"
+                "error": "Access Denied"
               }
             }
           }
@@ -766,18 +912,18 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "1204",
+                  "id": "89",
                   "type": "task",
                   "attributes": {
                     "name": "New Task",
                     "deadline": null,
                     "position": 1,
-                    "done": null
+                    "done": false
                   },
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "1448",
+                        "id": "98",
                         "type": "project"
                       }
                     },
@@ -791,11 +937,11 @@
               }
             }
           },
-          "422": {
+          "403": {
             "description": "unauthorized",
             "examples": {
               "application/json": {
-                "error": "authorize"
+                "error": "Access Denied"
               }
             }
           }
@@ -819,156 +965,14 @@
             "description": "deleted task",
             "examples": {
               "application/json": {
-                "deleted": true
               }
             }
           },
-          "422": {
+          "403": {
             "description": "unauthorized",
             "examples": {
               "application/json": {
-                "error": "authorize"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/tasks/{task_id}/complete": {
-      "patch": {
-        "summary": "Mark Task as complete",
-        "tags": [
-          "Task: Complete"
-        ],
-        "parameters": [
-          {
-            "name": "task_id",
-            "in": "path",
-            "type": "string",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "task": {
-                  "type": "object",
-                  "properties": {
-                    "done": {
-                      "type": "boolean",
-                      "example": "true"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "update Task complete",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "1208",
-                  "type": "task",
-                  "attributes": {
-                    "name": "Name_17",
-                    "deadline": null,
-                    "position": 1,
-                    "done": true
-                  },
-                  "relationships": {
-                    "project": {
-                      "data": {
-                        "id": "1452",
-                        "type": "project"
-                      }
-                    },
-                    "comments": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/tasks/{task_id}/position": {
-      "patch": {
-        "summary": "Change Position of Task",
-        "tags": [
-          "Task: Position"
-        ],
-        "parameters": [
-          {
-            "name": "task_id",
-            "in": "path",
-            "type": "string",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "task": {
-                  "type": "object",
-                  "properties": {
-                    "position": {
-                      "type": "integer",
-                      "example": "0"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "update Task position",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "1209",
-                  "type": "task",
-                  "attributes": {
-                    "name": "Name_18",
-                    "deadline": null,
-                    "position": 4,
-                    "done": null
-                  },
-                  "relationships": {
-                    "project": {
-                      "data": {
-                        "id": "1453",
-                        "type": "project"
-                      }
-                    },
-                    "comments": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "invalid params",
-            "examples": {
-              "application/json": {
+                "error": "Access Denied"
               }
             }
           }
@@ -1004,10 +1008,10 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": 1633,
-                  "email": "person_24@example.com",
+                  "id": 116,
+                  "email": "person_34@example.com",
                   "provider": "email",
-                  "uid": "person_24@example.com"
+                  "uid": "person_34@example.com"
                 }
               }
             }
@@ -1110,12 +1114,12 @@
               "application/json": {
                 "status": "success",
                 "data": {
-                  "id": 1637,
+                  "id": 120,
                   "provider": "email",
-                  "uid": "person_28@example.com",
-                  "email": "person_28@example.com",
-                  "created_at": "2019-10-23T07:24:11.069Z",
-                  "updated_at": "2019-10-23T07:24:11.074Z"
+                  "uid": "person_38@example.com",
+                  "email": "person_38@example.com",
+                  "created_at": "2019-10-24T07:09:09.609Z",
+                  "updated_at": "2019-10-24T07:09:09.614Z"
                 }
               }
             }

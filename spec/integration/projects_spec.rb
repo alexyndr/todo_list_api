@@ -21,6 +21,8 @@ describe 'Projects' do
         it 'returns a list of Projects' do |example|
           get api_v1_projects_path, headers: tokens
 
+          expect(response).to match_json_schema('projects')
+
           assert_response_matches_metadata(example.metadata)
         end
       end
@@ -48,6 +50,8 @@ describe 'Projects' do
         it 'returns the created Projects' do |example|
           post api_v1_projects_path(params), headers: tokens
 
+          expect(response).to match_json_schema('project')
+
           assert_response_matches_metadata(example.metadata)
         end
       end
@@ -74,6 +78,8 @@ describe 'Projects' do
 
         it 'return a Project' do |example|
           get api_v1_project_path(project.id), headers: tokens
+
+          expect(response).to match_json_schema('project')
 
           assert_response_matches_metadata(example.metadata)
         end
@@ -103,6 +109,8 @@ describe 'Projects' do
 
         it 'return the updated Project' do |example|
           put api_v1_project_path(project.id), params: params, headers: tokens
+
+          expect(response).to match_json_schema('project')
 
           assert_response_matches_metadata(example.metadata)
         end

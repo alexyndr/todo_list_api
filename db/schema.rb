@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_10_16_103830) do
     t.string "name"
     t.datetime "deadline"
     t.integer "position"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "project_id", null: false
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2019_10_16_103830) do
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"

@@ -5,7 +5,7 @@ class Task < ApplicationRecord
   acts_as_list scope: :project
 
   validates :name, presence: true
-  validates :validate_deadline
+  validate :validate_deadline
 
   def validate_deadline
     return if deadline.blank?

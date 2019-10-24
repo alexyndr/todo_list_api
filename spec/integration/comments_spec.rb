@@ -25,12 +25,13 @@ describe 'Comments' do
         it 'returns a list of Comments' do |example|
           get api_v1_task_comments_path(task), headers: tokens
 
+          expect(response).to match_json_schema('comments')
+
           assert_response_matches_metadata(example.metadata)
         end
       end
 
       response '401', 'not authorized' do
-
         it 'returns error' do |example|
           get api_v1_task_comments_path(task)
 
@@ -53,6 +54,8 @@ describe 'Comments' do
 
         it 'returns a Comment' do |example|
           post api_v1_task_comments_path(task), params: params, headers: tokens
+
+          expect(response).to match_json_schema('comment')
 
           assert_response_matches_metadata(example.metadata)
         end
@@ -87,7 +90,6 @@ describe 'Comments' do
       end
 
       response '401', 'not authorized' do
-
         it 'return error' do |example|
           delete api_v1_comment_path(1)
 

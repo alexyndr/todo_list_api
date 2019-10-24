@@ -1,0 +1,64 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "object",
+      "title": "The Data Schema",
+      "required": [
+        "id",
+        "email",
+        "provider",
+        "uid"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#/properties/data/properties/id",
+          "type": "integer",
+          "title": "The Id Schema",
+          "default": 0,
+          "examples": [
+            3207
+          ]
+        },
+        "email": {
+          "$id": "#/properties/data/properties/email",
+          "type": "string",
+          "title": "The Email Schema",
+          "default": "",
+          "examples": [
+            "person_34@example.com"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "provider": {
+          "$id": "#/properties/data/properties/provider",
+          "type": "string",
+          "title": "The Provider Schema",
+          "default": "",
+          "examples": [
+            "email"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "uid": {
+          "$id": "#/properties/data/properties/uid",
+          "type": "string",
+          "title": "The Uid Schema",
+          "default": "",
+          "examples": [
+            "person_34@example.com"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    }
+  }
+}

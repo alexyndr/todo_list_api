@@ -1,6 +1,5 @@
 class Api::V1::ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, except: [:create, :index]
 
   def index
     projects = current_user.projects
@@ -8,7 +7,8 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def show
-    render json: ProjectSerializer.new(@project).serialized_json, status: :ok
+    project = authorize(set_project)
+    render json: ProjectSerializer.new(project).serialized_json, status: :ok
   end
 
   def create
@@ -21,26 +21,23 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(project_params)
-      render json: ProjectSerializer.new(@project).serialized_json, status: :ok
+    project = authorize(set_project)
+    if project.update(project_params)
+      render json: ProjectSerializer.new(project).serialized_json, status: :ok
     else
-      render json: @project.errors, status: :unprocessable_entity
+      render json: project.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    render json: { deleted: true }, status: :ok if @project.destroy
+    project = authorize(set_project)
+    render json: {}, status: :ok if project.destroy
   end
 
   private
 
   def set_project
-    @project = Project.find_by(id: params[:id])
-    if @project
-      authorize @project
-    else
-      render status: :no_content
-    end
+    Project.find(params[:id])
   end
 
   def project_params
