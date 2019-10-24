@@ -6,6 +6,7 @@ class ApplicationController < ActionController::API
 
   rescue_from Pundit::NotAuthorizedError, with: :not_authorize
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  rescue_from ActionController::ParameterMissing, with: :invalid_params
 
   private
 
@@ -15,5 +16,9 @@ class ApplicationController < ActionController::API
 
   def not_found
     render json: { error: 'Not found' }, status: 404
+  end
+
+  def invalid_params
+    render json: { error: 'Bad request' }, status: 400
   end
 end

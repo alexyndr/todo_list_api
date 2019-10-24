@@ -29,7 +29,7 @@ describe 'Complete' do
       }
 
       response '200', 'update Task complete' do
-        let(:params) { { task: { done: true } } }
+        let(:params) { { task: { done: 'true' } } }
 
         it 'returns a Task' do |example|
           patch api_v1_complete_path(task), params: params, headers: tokens
@@ -41,7 +41,7 @@ describe 'Complete' do
       end
 
       response '422', 'invalid params' do
-        let(:params) { { task: { position: nil } } }
+        let(:params) { { task: { position: '2' } } }
 
         it 'returns error' do |example|
           patch api_v1_complete_path(task), params: params, headers: tokens

@@ -53,8 +53,8 @@ describe 'Tasks' do
         end
       end
 
-      response '422', 'invalid params' do
-        let(:params) { { task: { name: nil } } }
+      response '400', 'invalid params' do
+        let(:params) { { task: {} } }
 
         it 'returns error' do |example|
           post api_v1_project_tasks_path(project), params: params, headers: tokens

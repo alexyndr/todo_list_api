@@ -56,8 +56,8 @@ describe 'Projects' do
         end
       end
 
-      response '422', 'wrong params' do
-        let(:params) { { project: { name: nil } } }
+      response '400', 'wrong params' do
+        let(:params) { { project: {} } }
 
         it 'returns error' do |example|
           post api_v1_projects_path(params), headers: tokens

@@ -15,16 +15,16 @@ class Api::V1::TasksController < ApplicationController
     if task.save
       render json: TaskSerializer.new(task).serialized_json, status: :created
     else
-      render json: task.errors, status: :unprocessable_entity
+      render json: RequestErrorSerializer.new(task.errors), status: :unprocessable_entity
     end
   end
 
   def update
     task = authorize(find_task)
-    if Tasks::UpdateActionService.call(task, task_params)
+    if task.update(task_params)
       render json: TaskSerializer.new(task).serialized_json, status: :ok
     else
-      render json: task.errors, status: :unprocessable_entity
+      render json: RequestErrorSerializer.new(task.errors), status: :unprocessable_entity
     end
   end
 
@@ -45,6 +45,6 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :deadline, :position, :done)
+    params.require(:task).permit(:name, :deadline)
   end
 end

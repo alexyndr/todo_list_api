@@ -11,7 +11,7 @@ class Api::V1::CommentsController < ApplicationController
     if comment.save
       render json: CommentSerializer.new(comment).serialized_json, status: :created
     else
-      render json: comment.errors, status: :unprocessable_entity
+      render json: RequestErrorSerializer.new(comment.errors), status: :unprocessable_entity
     end
   end
 

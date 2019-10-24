@@ -41,7 +41,7 @@ describe 'Position' do
       end
 
       response '422', 'invalid params' do
-        let(:params) { { task: { position: nil } } }
+        let(:params) { { task: { done: 'true' } } }
 
         it 'returns error' do |example|
           patch api_v1_position_path(task), params: params, headers: tokens

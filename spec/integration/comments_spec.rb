@@ -61,8 +61,8 @@ describe 'Comments' do
         end
       end
 
-      response '422', 'wrong params' do
-        let(:params) { { comment: { body: nil } } }
+      response '400', 'wrong params' do
+        let(:params) { { comment: {} } }
 
         it 'returns error' do |example|
           post api_v1_task_comments_path(task), params: params, headers: tokens

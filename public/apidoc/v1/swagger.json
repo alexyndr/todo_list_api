@@ -74,50 +74,50 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "9",
+                    "id": "65",
                     "type": "comment",
                     "attributes": {
                       "body": "Body number_1",
                       "file": {
                         "name": "file",
                         "record": {
-                          "id": 9,
+                          "id": 65,
                           "body": "Body number_1",
-                          "created_at": "2019-10-24T07:09:02.837Z",
-                          "updated_at": "2019-10-24T07:09:02.837Z",
-                          "task_id": 67
+                          "created_at": "2019-10-24T11:02:48.103Z",
+                          "updated_at": "2019-10-24T11:02:48.103Z",
+                          "task_id": 553
                         }
                       }
                     },
                     "relationships": {
                       "task": {
                         "data": {
-                          "id": "67",
+                          "id": "553",
                           "type": "task"
                         }
                       }
                     }
                   },
                   {
-                    "id": "10",
+                    "id": "66",
                     "type": "comment",
                     "attributes": {
                       "body": "Body number_2",
                       "file": {
                         "name": "file",
                         "record": {
-                          "id": 10,
+                          "id": 66,
                           "body": "Body number_2",
-                          "created_at": "2019-10-24T07:09:02.841Z",
-                          "updated_at": "2019-10-24T07:09:02.841Z",
-                          "task_id": 67
+                          "created_at": "2019-10-24T11:02:48.106Z",
+                          "updated_at": "2019-10-24T11:02:48.106Z",
+                          "task_id": 553
                         }
                       }
                     },
                     "relationships": {
                       "task": {
                         "data": {
-                          "id": "67",
+                          "id": "553",
                           "type": "task"
                         }
                       }
@@ -166,25 +166,25 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "11",
+                  "id": "67",
                   "type": "comment",
                   "attributes": {
                     "body": "new comment",
                     "file": {
                       "name": "file",
                       "record": {
-                        "id": 11,
+                        "id": 67,
                         "body": "new comment",
-                        "created_at": "2019-10-24T07:09:03.237Z",
-                        "updated_at": "2019-10-24T07:09:03.237Z",
-                        "task_id": 69
+                        "created_at": "2019-10-24T11:02:48.511Z",
+                        "updated_at": "2019-10-24T11:02:48.511Z",
+                        "task_id": 555
                       }
                     }
                   },
                   "relationships": {
                     "task": {
                       "data": {
-                        "id": "69",
+                        "id": "555",
                         "type": "task"
                       }
                     }
@@ -193,13 +193,11 @@
               }
             }
           },
-          "422": {
+          "400": {
             "description": "wrong params",
             "examples": {
               "application/json": {
-                "body": [
-                  "can't be blank"
-                ]
+                "error": "Bad request"
               }
             }
           }
@@ -283,7 +281,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "72",
+                  "id": "558",
                   "type": "task",
                   "attributes": {
                     "name": "Name_6",
@@ -294,7 +292,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "78",
+                        "id": "642",
                         "type": "project"
                       }
                     },
@@ -312,6 +310,9 @@
             "description": "invalid params",
             "examples": {
               "application/json": {
+                "errors": [
+
+                ]
               }
             }
           }
@@ -357,7 +358,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "74",
+                  "id": "560",
                   "type": "task",
                   "attributes": {
                     "name": "Name_8",
@@ -368,7 +369,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "80",
+                        "id": "644",
                         "type": "project"
                       }
                     },
@@ -386,6 +387,9 @@
             "description": "invalid params",
             "examples": {
               "application/json": {
+                "errors": [
+
+                ]
               }
             }
           }
@@ -405,7 +409,7 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "82",
+                    "id": "646",
                     "type": "project",
                     "attributes": {
                       "name": "Name_10"
@@ -413,7 +417,7 @@
                     "relationships": {
                       "user": {
                         "data": {
-                          "id": "92",
+                          "id": "723",
                           "type": "user"
                         }
                       },
@@ -425,7 +429,7 @@
                     }
                   },
                   {
-                    "id": "83",
+                    "id": "647",
                     "type": "project",
                     "attributes": {
                       "name": "Name_11"
@@ -433,7 +437,7 @@
                     "relationships": {
                       "user": {
                         "data": {
-                          "id": "92",
+                          "id": "723",
                           "type": "user"
                         }
                       },
@@ -481,7 +485,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "84",
+                  "id": "648",
                   "type": "project",
                   "attributes": {
                     "name": "Project"
@@ -489,7 +493,7 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "93",
+                        "id": "724",
                         "type": "user"
                       }
                     },
@@ -503,13 +507,11 @@
               }
             }
           },
-          "422": {
+          "400": {
             "description": "wrong params",
             "examples": {
               "application/json": {
-                "name": [
-                  "can't be blank"
-                ]
+                "error": "Bad request"
               }
             }
           }
@@ -536,7 +538,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "85",
+                  "id": "649",
                   "type": "project",
                   "attributes": {
                     "name": "Name_12"
@@ -544,7 +546,7 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "95",
+                        "id": "726",
                         "type": "user"
                       }
                     },
@@ -597,7 +599,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "86",
+                  "id": "650",
                   "type": "project",
                   "attributes": {
                     "name": "New Project"
@@ -605,7 +607,7 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "96",
+                        "id": "727",
                         "type": "user"
                       }
                     },
@@ -676,7 +678,7 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "76",
+                    "id": "562",
                     "type": "task",
                     "attributes": {
                       "name": "Name_10",
@@ -687,7 +689,7 @@
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "88",
+                          "id": "652",
                           "type": "project"
                         }
                       },
@@ -699,7 +701,7 @@
                     }
                   },
                   {
-                    "id": "78",
+                    "id": "564",
                     "type": "task",
                     "attributes": {
                       "name": "Name_12",
@@ -710,7 +712,7 @@
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "88",
+                          "id": "652",
                           "type": "project"
                         }
                       },
@@ -722,7 +724,7 @@
                     }
                   },
                   {
-                    "id": "79",
+                    "id": "565",
                     "type": "task",
                     "attributes": {
                       "name": "Name_13",
@@ -733,7 +735,7 @@
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "88",
+                          "id": "652",
                           "type": "project"
                         }
                       },
@@ -777,7 +779,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "82",
+                  "id": "568",
                   "type": "task",
                   "attributes": {
                     "name": "Project",
@@ -788,7 +790,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "90",
+                        "id": "654",
                         "type": "project"
                       }
                     },
@@ -802,13 +804,11 @@
               }
             }
           },
-          "422": {
+          "400": {
             "description": "invalid params",
             "examples": {
               "application/json": {
-                "name": [
-                  "can't be blank"
-                ]
+                "error": "Bad request"
               }
             }
           }
@@ -835,7 +835,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "85",
+                  "id": "571",
                   "type": "task",
                   "attributes": {
                     "name": "Name_18",
@@ -846,7 +846,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "94",
+                        "id": "658",
                         "type": "project"
                       }
                     },
@@ -912,7 +912,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "89",
+                  "id": "575",
                   "type": "task",
                   "attributes": {
                     "name": "New Task",
@@ -923,7 +923,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "98",
+                        "id": "662",
                         "type": "project"
                       }
                     },
@@ -1008,7 +1008,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": 116,
+                  "id": 747,
                   "email": "person_34@example.com",
                   "provider": "email",
                   "uid": "person_34@example.com"
@@ -1114,12 +1114,12 @@
               "application/json": {
                 "status": "success",
                 "data": {
-                  "id": 120,
+                  "id": 751,
                   "provider": "email",
                   "uid": "person_38@example.com",
                   "email": "person_38@example.com",
-                  "created_at": "2019-10-24T07:09:09.609Z",
-                  "updated_at": "2019-10-24T07:09:09.614Z"
+                  "created_at": "2019-10-24T11:02:54.846Z",
+                  "updated_at": "2019-10-24T11:02:54.851Z"
                 }
               }
             }

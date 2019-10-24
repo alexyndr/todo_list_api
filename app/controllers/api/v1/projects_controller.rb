@@ -16,7 +16,7 @@ class Api::V1::ProjectsController < ApplicationController
     if project.save
       render json: ProjectSerializer.new(project).serialized_json, status: :created
     else
-      render json: project.errors, status: :unprocessable_entity
+      render json: RequestErrorSerializer.new(project.errors), status: :unprocessable_entity
     end
   end
 
@@ -25,7 +25,7 @@ class Api::V1::ProjectsController < ApplicationController
     if project.update(project_params)
       render json: ProjectSerializer.new(project).serialized_json, status: :ok
     else
-      render json: project.errors, status: :unprocessable_entity
+      render json: RequestErrorSerializer.new(project.errors), status: :unprocessable_entity
     end
   end
 
