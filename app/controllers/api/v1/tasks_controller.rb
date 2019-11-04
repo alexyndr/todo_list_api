@@ -15,7 +15,7 @@ class Api::V1::TasksController < ApplicationController
     if task.save
       render json: TaskSerializer.new(task).serialized_json, status: :created
     else
-      render json: ErrorSerializer.new(task.errors), status: :unprocessable_entity
+      render json: RequestErrorSerializer.new(task.errors), status: :unprocessable_entity
     end
   end
 
@@ -24,7 +24,7 @@ class Api::V1::TasksController < ApplicationController
     if task.update(task_params)
       render json: TaskSerializer.new(task).serialized_json, status: :ok
     else
-      render json: ErrorSerializer.new(task.errors), status: :unprocessable_entity
+      render json: RequestErrorSerializer.new(task.errors), status: :unprocessable_entity
     end
   end
 
