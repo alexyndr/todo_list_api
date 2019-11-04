@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RequestErrorSerializer
   include FastJsonapi::ErrorSerializer
 
@@ -6,7 +8,5 @@ class RequestErrorSerializer
               :code,
               :status
 
-  attribute :source do |err|
-    err.serializer_source
-  end
+  attribute :source, &:serializer_source
 end

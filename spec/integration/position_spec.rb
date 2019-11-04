@@ -12,7 +12,7 @@ describe 'Position' do
     example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
   end
 
-   path '/tasks/{id}/position' do
+  path '/tasks/{id}/position' do
     patch 'Change Position of Task' do
       tags 'Task: Position'
       parameter name: :id, in: :path, type: :string
