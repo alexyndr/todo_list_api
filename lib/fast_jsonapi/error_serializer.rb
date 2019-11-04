@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fast_jsonapi'
 
 module FastJsonapi::ErrorSerializer
@@ -15,15 +17,15 @@ module FastJsonapi::ErrorSerializer
     end
 
     def hash_for_one_record
-      serialized_hash = super[:data]&[:attributes]
-      return !with_root_key ? serialized_hash : {
+      serialized_hash = super[:data] & [:attributes]
+      !with_root_key ? serialized_hash : {
         errors: serialized_hash
       }
     end
 
     def hash_for_collection
-      serialized_hash = super[:data]&.map{|err| err[:attributes]}
-      return !with_root_key ? serialized_hash : {
+      serialized_hash = super[:data]&.map { |err| err[:attributes] }
+      !with_root_key ? serialized_hash : {
         errors: serialized_hash
       }
     end

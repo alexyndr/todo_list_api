@@ -18,7 +18,7 @@ describe 'Tasks' do
   path '/projects/{project_id}/tasks' do
     get 'A list of Tasks' do
       tags 'Tasks'
-      parameter name: :project_id, in: :path, type: :string 
+      parameter name: :project_id, in: :path, type: :string
 
       response '200', 'A list of Tasks' do
         let!(:task_one) { create(:task, project: project) }
