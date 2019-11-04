@@ -1,2 +1,2 @@
-release: RAILS_ENV=production rails assets:precompile && rails db:migrate
+release: bundle exec rails db:migrate
 web: bundle exec rails s
