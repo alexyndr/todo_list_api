@@ -7,7 +7,9 @@ describe 'Projects' do
   let(:tokens) { user.create_new_auth_token }
 
   after do |example|
-    example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+    if response.body.present?
+      example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+    end
   end
 
   path '/projects' do
@@ -123,7 +125,7 @@ describe 'Projects' do
       tags 'Projects'
       parameter name: :id, in: :path, type: :string
 
-      response '200', 'deleted project' do
+      response '204', 'deleted project' do
         let!(:project) { create(:project, user: user) }
 
         it 'delete the Project' do |example|

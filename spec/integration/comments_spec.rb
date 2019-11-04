@@ -9,7 +9,9 @@ describe 'Comments' do
   let(:task) { create(:task, project: project) }
 
   after do |example|
-    example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+    if response.body.present?
+      example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+    end
   end
 
   path '/tasks/{task_id}/comments' do
@@ -79,7 +81,7 @@ describe 'Comments' do
       produces 'application/json'
       parameter name: :id, in: :path, type: :string
 
-      response '200', 'deleted comment' do
+      response '204', 'deleted comment' do
         let(:comment) { create(:comment, task: task) }
 
         it 'delete the Comment' do |example|

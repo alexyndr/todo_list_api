@@ -11,13 +11,13 @@ class Api::V1::CommentsController < ApplicationController
     if comment.save
       render json: CommentSerializer.new(comment).serialized_json, status: :created
     else
-      render json: RequestErrorSerializer.new(comment.errors), status: :unprocessable_entity
+      render json: ErrorSerializer.new(comment.errors), status: :unprocessable_entity
     end
   end
 
   def destroy
     comment = authorize(set_comment)
-    render json: {}, status: :ok if comment.destroy
+    comment.destroy
   end
 
   private

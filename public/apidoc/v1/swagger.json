@@ -74,50 +74,50 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "65",
+                    "id": "113",
                     "type": "comment",
                     "attributes": {
                       "body": "Body number_1",
                       "file": {
                         "name": "file",
                         "record": {
-                          "id": 65,
+                          "id": 113,
                           "body": "Body number_1",
-                          "created_at": "2019-10-24T11:02:48.103Z",
-                          "updated_at": "2019-10-24T11:02:48.103Z",
-                          "task_id": 553
+                          "created_at": "2019-11-04T10:08:09.125Z",
+                          "updated_at": "2019-11-04T10:08:09.125Z",
+                          "task_id": 967
                         }
                       }
                     },
                     "relationships": {
                       "task": {
                         "data": {
-                          "id": "553",
+                          "id": "967",
                           "type": "task"
                         }
                       }
                     }
                   },
                   {
-                    "id": "66",
+                    "id": "114",
                     "type": "comment",
                     "attributes": {
                       "body": "Body number_2",
                       "file": {
                         "name": "file",
                         "record": {
-                          "id": 66,
+                          "id": 114,
                           "body": "Body number_2",
-                          "created_at": "2019-10-24T11:02:48.106Z",
-                          "updated_at": "2019-10-24T11:02:48.106Z",
-                          "task_id": 553
+                          "created_at": "2019-11-04T10:08:09.129Z",
+                          "updated_at": "2019-11-04T10:08:09.129Z",
+                          "task_id": 967
                         }
                       }
                     },
                     "relationships": {
                       "task": {
                         "data": {
-                          "id": "553",
+                          "id": "967",
                           "type": "task"
                         }
                       }
@@ -166,25 +166,25 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "67",
+                  "id": "115",
                   "type": "comment",
                   "attributes": {
                     "body": "new comment",
                     "file": {
                       "name": "file",
                       "record": {
-                        "id": 67,
+                        "id": 115,
                         "body": "new comment",
-                        "created_at": "2019-10-24T11:02:48.511Z",
-                        "updated_at": "2019-10-24T11:02:48.511Z",
-                        "task_id": 555
+                        "created_at": "2019-11-04T10:08:09.580Z",
+                        "updated_at": "2019-11-04T10:08:09.580Z",
+                        "task_id": 969
                       }
                     }
                   },
                   "relationships": {
                     "task": {
                       "data": {
-                        "id": "555",
+                        "id": "969",
                         "type": "task"
                       }
                     }
@@ -222,12 +222,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "deleted comment",
-            "examples": {
-              "application/json": {
-              }
-            }
+          "204": {
+            "description": "deleted comment"
           },
           "401": {
             "description": "not authorized",
@@ -281,7 +277,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "558",
+                  "id": "972",
                   "type": "task",
                   "attributes": {
                     "name": "Name_6",
@@ -292,7 +288,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "642",
+                        "id": "1086",
                         "type": "project"
                       }
                     },
@@ -358,7 +354,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "560",
+                  "id": "974",
                   "type": "task",
                   "attributes": {
                     "name": "Name_8",
@@ -369,7 +365,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "644",
+                        "id": "1088",
                         "type": "project"
                       }
                     },
@@ -409,7 +405,7 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "646",
+                    "id": "1090",
                     "type": "project",
                     "attributes": {
                       "name": "Name_10"
@@ -417,7 +413,7 @@
                     "relationships": {
                       "user": {
                         "data": {
-                          "id": "723",
+                          "id": "1227",
                           "type": "user"
                         }
                       },
@@ -429,7 +425,7 @@
                     }
                   },
                   {
-                    "id": "647",
+                    "id": "1091",
                     "type": "project",
                     "attributes": {
                       "name": "Name_11"
@@ -437,7 +433,7 @@
                     "relationships": {
                       "user": {
                         "data": {
-                          "id": "723",
+                          "id": "1227",
                           "type": "user"
                         }
                       },
@@ -485,7 +481,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "648",
+                  "id": "1092",
                   "type": "project",
                   "attributes": {
                     "name": "Project"
@@ -493,7 +489,7 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "724",
+                        "id": "1228",
                         "type": "user"
                       }
                     },
@@ -538,7 +534,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "649",
+                  "id": "1093",
                   "type": "project",
                   "attributes": {
                     "name": "Name_12"
@@ -546,7 +542,7 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "726",
+                        "id": "1230",
                         "type": "user"
                       }
                     },
@@ -599,7 +595,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "650",
+                  "id": "1094",
                   "type": "project",
                   "attributes": {
                     "name": "New Project"
@@ -607,7 +603,7 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "727",
+                        "id": "1231",
                         "type": "user"
                       }
                     },
@@ -637,12 +633,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "deleted project",
-            "examples": {
-              "application/json": {
-              }
-            }
+          "204": {
+            "description": "deleted project"
           },
           "401": {
             "description": "not authorized",
@@ -678,7 +670,7 @@
               "application/json": {
                 "data": [
                   {
-                    "id": "562",
+                    "id": "976",
                     "type": "task",
                     "attributes": {
                       "name": "Name_10",
@@ -689,7 +681,7 @@
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "652",
+                          "id": "1096",
                           "type": "project"
                         }
                       },
@@ -701,7 +693,7 @@
                     }
                   },
                   {
-                    "id": "564",
+                    "id": "978",
                     "type": "task",
                     "attributes": {
                       "name": "Name_12",
@@ -712,7 +704,7 @@
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "652",
+                          "id": "1096",
                           "type": "project"
                         }
                       },
@@ -724,7 +716,7 @@
                     }
                   },
                   {
-                    "id": "565",
+                    "id": "979",
                     "type": "task",
                     "attributes": {
                       "name": "Name_13",
@@ -735,7 +727,7 @@
                     "relationships": {
                       "project": {
                         "data": {
-                          "id": "652",
+                          "id": "1096",
                           "type": "project"
                         }
                       },
@@ -779,7 +771,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "568",
+                  "id": "982",
                   "type": "task",
                   "attributes": {
                     "name": "Project",
@@ -790,7 +782,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "654",
+                        "id": "1098",
                         "type": "project"
                       }
                     },
@@ -835,7 +827,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "571",
+                  "id": "985",
                   "type": "task",
                   "attributes": {
                     "name": "Name_18",
@@ -846,7 +838,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "658",
+                        "id": "1102",
                         "type": "project"
                       }
                     },
@@ -912,7 +904,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": "575",
+                  "id": "989",
                   "type": "task",
                   "attributes": {
                     "name": "New Task",
@@ -923,7 +915,7 @@
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "662",
+                        "id": "1106",
                         "type": "project"
                       }
                     },
@@ -961,12 +953,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "deleted task",
-            "examples": {
-              "application/json": {
-              }
-            }
+          "204": {
+            "description": "deleted task"
           },
           "403": {
             "description": "unauthorized",
@@ -1008,7 +996,7 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": 747,
+                  "id": 1251,
                   "email": "person_34@example.com",
                   "provider": "email",
                   "uid": "person_34@example.com"
@@ -1114,12 +1102,12 @@
               "application/json": {
                 "status": "success",
                 "data": {
-                  "id": 751,
+                  "id": 1255,
                   "provider": "email",
                   "uid": "person_38@example.com",
                   "email": "person_38@example.com",
-                  "created_at": "2019-10-24T11:02:54.846Z",
-                  "updated_at": "2019-10-24T11:02:54.851Z"
+                  "created_at": "2019-11-04T10:08:15.968Z",
+                  "updated_at": "2019-11-04T10:08:15.973Z"
                 }
               }
             }

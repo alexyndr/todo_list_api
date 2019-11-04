@@ -16,7 +16,7 @@ class Api::V1::ProjectsController < ApplicationController
     if project.save
       render json: ProjectSerializer.new(project).serialized_json, status: :created
     else
-      render json: RequestErrorSerializer.new(project.errors), status: :unprocessable_entity
+      render json: ErrorSerializer.new(project.errors), status: :unprocessable_entity
     end
   end
 
@@ -25,13 +25,13 @@ class Api::V1::ProjectsController < ApplicationController
     if project.update(project_params)
       render json: ProjectSerializer.new(project).serialized_json, status: :ok
     else
-      render json: RequestErrorSerializer.new(project.errors), status: :unprocessable_entity
+      render json: ErrorSerializer.new(project.errors), status: :unprocessable_entity
     end
   end
 
   def destroy
     project = authorize(set_project)
-    render json: {}, status: :ok if project.destroy
+    project.destroy
   end
 
   private

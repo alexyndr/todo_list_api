@@ -9,7 +9,7 @@ local:
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %> # TO Do
-  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %> # TO Do
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   region: eu-north-1
-  bucket: todo-list-api-for-geek
+  bucket: <%= Rails.application.credentials.dig(:aws, :bucket) %>

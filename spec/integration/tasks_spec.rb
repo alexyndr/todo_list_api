@@ -10,13 +10,15 @@ describe 'Tasks' do
   let!(:invalid_task) { create(:task, project: create(:project, :user_trait)) }
 
   after do |example|
-    example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+    if response.body.present?
+      example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+    end
   end
 
   path '/projects/{project_id}/tasks' do
     get 'A list of Tasks' do
       tags 'Tasks'
-      parameter name: :project_id, in: :path, type: :string
+      parameter name: :project_id, in: :path, type: :string 
 
       response '200', 'A list of Tasks' do
         let!(:task_one) { create(:task, project: project) }
@@ -134,7 +136,7 @@ describe 'Tasks' do
       tags 'Tasks'
       parameter name: :id, in: :path, type: :string
 
-      response '200', 'deleted task' do
+      response '204', 'deleted task' do
         it 'delete the Task' do |example|
           delete api_v1_task_path(task), headers: tokens
 
