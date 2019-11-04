@@ -12,7 +12,7 @@ describe 'Complete' do
     example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
   end
 
-   path '/tasks/{id}/complete' do
+  path '/tasks/{id}/complete' do
     patch 'Mark Task as complete' do
       tags 'Task: Complete'
       parameter name: :id, in: :path, type: :string

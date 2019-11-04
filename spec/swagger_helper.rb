@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -59,7 +61,7 @@ RSpec.configure do |config|
             project: {
               type: :object,
               properties: {
-                name: { type: :string, example: 'string' },
+                name: { type: :string, example: 'string' }
               }
             }
           }
