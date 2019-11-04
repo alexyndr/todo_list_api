@@ -1,0 +1,97 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "status",
+    "data"
+  ],
+  "properties": {
+    "status": {
+      "$id": "#/properties/status",
+      "type": "string",
+      "title": "The Status Schema",
+      "default": "",
+      "examples": [
+        "success"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "data": {
+      "$id": "#/properties/data",
+      "type": "object",
+      "title": "The Data Schema",
+      "required": [
+        "id",
+        "provider",
+        "uid",
+        "email",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#/properties/data/properties/id",
+          "type": "integer",
+          "title": "The Id Schema",
+          "default": 0,
+          "examples": [
+            3211
+          ]
+        },
+        "provider": {
+          "$id": "#/properties/data/properties/provider",
+          "type": "string",
+          "title": "The Provider Schema",
+          "default": "",
+          "examples": [
+            "email"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "uid": {
+          "$id": "#/properties/data/properties/uid",
+          "type": "string",
+          "title": "The Uid Schema",
+          "default": "",
+          "examples": [
+            "person_38@example.com"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "email": {
+          "$id": "#/properties/data/properties/email",
+          "type": "string",
+          "title": "The Email Schema",
+          "default": "",
+          "examples": [
+            "person_38@example.com"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "created_at": {
+          "$id": "#/properties/data/properties/created_at",
+          "type": "string",
+          "title": "The Created_at Schema",
+          "default": "",
+          "examples": [
+            "2019-10-23T16:34:15.887Z"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "updated_at": {
+          "$id": "#/properties/data/properties/updated_at",
+          "type": "string",
+          "title": "The Updated_at Schema",
+          "default": "",
+          "examples": [
+            "2019-10-23T16:34:15.892Z"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    }
+  }
+}

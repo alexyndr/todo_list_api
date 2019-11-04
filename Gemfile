@@ -8,23 +8,20 @@ gem 'active_storage_validations'
 gem 'aws-sdk-s3', require: false
 gem 'pg'
 gem 'puma', '~> 3.11'
-# gem 'webpacker', '~> 4.0'
-gem 'turbolinks', '~> 5'
-# gem 'jbuilder', '~> 2.7' 
-gem 'bcrypt', '~> 3.1.7' # to read
-gem 'acts_as_list' # to read
-gem 'fast_jsonapi' # to read
+gem 'acts_as_list' # sorting and reordering a number of objects in a list
+gem 'fast_jsonapi' # serializer for json
 gem 'rack-cors' # to read
-gem 'pundit' # to read
-# gem 'jwt' # to read
-# gem 'redis', '~> 4.0'
-
+gem 'pundit' # authorization
+gem 'devise_token_auth'
+gem 'rswag-api'
+gem 'rswag-ui'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -35,21 +32,18 @@ group :development do
   gem 'rubocop-rspec'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec-rails'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'dox', require: false
   gem 'capybara', '>= 2.15'
-  # gem 'selenium-webdriver'
-  # gem 'webdrivers'
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'json_matchers'
   gem 'pundit-matchers'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'rspec_junit_formatter'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

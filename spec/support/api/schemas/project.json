@@ -1,0 +1,132 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "object",
+      "title": "The Data Schema",
+      "required": [
+        "id",
+        "type",
+        "attributes",
+        "relationships"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#/properties/data/properties/id",
+          "type": "string",
+          "title": "The Id Schema",
+          "default": "",
+          "examples": [
+            "2927"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "type": {
+          "$id": "#/properties/data/properties/type",
+          "type": "string",
+          "title": "The Type Schema",
+          "default": "",
+          "examples": [
+            "project"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "attributes": {
+          "$id": "#/properties/data/properties/attributes",
+          "type": "object",
+          "title": "The Attributes Schema",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "$id": "#/properties/data/properties/attributes/properties/name",
+              "type": "string",
+              "title": "The Name Schema",
+              "default": "",
+              "examples": [
+                "Project"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        },
+        "relationships": {
+          "$id": "#/properties/data/properties/relationships",
+          "type": "object",
+          "title": "The Relationships Schema",
+          "required": [
+            "user",
+            "tasks"
+          ],
+          "properties": {
+            "user": {
+              "$id": "#/properties/data/properties/relationships/properties/user",
+              "type": "object",
+              "title": "The User Schema",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "$id": "#/properties/data/properties/relationships/properties/user/properties/data",
+                  "type": "object",
+                  "title": "The Data Schema",
+                  "required": [
+                    "id",
+                    "type"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$id": "#/properties/data/properties/relationships/properties/user/properties/data/properties/id",
+                      "type": "string",
+                      "title": "The Id Schema",
+                      "default": "",
+                      "examples": [
+                        "3184"
+                      ],
+                      "pattern": "^(.*)$"
+                    },
+                    "type": {
+                      "$id": "#/properties/data/properties/relationships/properties/user/properties/data/properties/type",
+                      "type": "string",
+                      "title": "The Type Schema",
+                      "default": "",
+                      "examples": [
+                        "user"
+                      ],
+                      "pattern": "^(.*)$"
+                    }
+                  }
+                }
+              }
+            },
+            "tasks": {
+              "$id": "#/properties/data/properties/relationships/properties/tasks",
+              "type": "object",
+              "title": "The Tasks Schema",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "$id": "#/properties/data/properties/relationships/properties/tasks/properties/data",
+                  "type": "array",
+                  "title": "The Data Schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
