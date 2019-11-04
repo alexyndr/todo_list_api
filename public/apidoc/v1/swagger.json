@@ -69,73 +69,10 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of Comment",
-            "examples": {
-              "application/json": {
-                "data": [
-                  {
-                    "id": "113",
-                    "type": "comment",
-                    "attributes": {
-                      "body": "Body number_1",
-                      "file": {
-                        "name": "file",
-                        "record": {
-                          "id": 113,
-                          "body": "Body number_1",
-                          "created_at": "2019-11-04T10:08:09.125Z",
-                          "updated_at": "2019-11-04T10:08:09.125Z",
-                          "task_id": 967
-                        }
-                      }
-                    },
-                    "relationships": {
-                      "task": {
-                        "data": {
-                          "id": "967",
-                          "type": "task"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "114",
-                    "type": "comment",
-                    "attributes": {
-                      "body": "Body number_2",
-                      "file": {
-                        "name": "file",
-                        "record": {
-                          "id": 114,
-                          "body": "Body number_2",
-                          "created_at": "2019-11-04T10:08:09.129Z",
-                          "updated_at": "2019-11-04T10:08:09.129Z",
-                          "task_id": 967
-                        }
-                      }
-                    },
-                    "relationships": {
-                      "task": {
-                        "data": {
-                          "id": "967",
-                          "type": "task"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            }
+            "description": "A list of Comment"
           },
           "401": {
-            "description": "not authorized",
-            "examples": {
-              "application/json": {
-                "errors": [
-                  "You need to sign in or sign up before continuing."
-                ]
-              }
-            }
+            "description": "not authorized"
           }
         }
       },
@@ -162,44 +99,10 @@
         ],
         "responses": {
           "201": {
-            "description": "create a Comment",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "115",
-                  "type": "comment",
-                  "attributes": {
-                    "body": "new comment",
-                    "file": {
-                      "name": "file",
-                      "record": {
-                        "id": 115,
-                        "body": "new comment",
-                        "created_at": "2019-11-04T10:08:09.580Z",
-                        "updated_at": "2019-11-04T10:08:09.580Z",
-                        "task_id": 969
-                      }
-                    }
-                  },
-                  "relationships": {
-                    "task": {
-                      "data": {
-                        "id": "969",
-                        "type": "task"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "description": "create a Comment"
           },
           "400": {
-            "description": "wrong params",
-            "examples": {
-              "application/json": {
-                "error": "Bad request"
-              }
-            }
+            "description": "wrong params"
           }
         }
       }
@@ -226,14 +129,7 @@
             "description": "deleted comment"
           },
           "401": {
-            "description": "not authorized",
-            "examples": {
-              "application/json": {
-                "errors": [
-                  "You need to sign in or sign up before continuing."
-                ]
-              }
-            }
+            "description": "not authorized"
           }
         }
       }
@@ -273,44 +169,10 @@
         ],
         "responses": {
           "200": {
-            "description": "update Task complete",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "972",
-                  "type": "task",
-                  "attributes": {
-                    "name": "Name_6",
-                    "deadline": null,
-                    "position": 1,
-                    "done": true
-                  },
-                  "relationships": {
-                    "project": {
-                      "data": {
-                        "id": "1086",
-                        "type": "project"
-                      }
-                    },
-                    "comments": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
+            "description": "update Task complete"
           },
           "422": {
-            "description": "invalid params",
-            "examples": {
-              "application/json": {
-                "errors": [
-
-                ]
-              }
-            }
+            "description": "invalid params"
           }
         }
       }
@@ -350,44 +212,10 @@
         ],
         "responses": {
           "200": {
-            "description": "update Task position",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "974",
-                  "type": "task",
-                  "attributes": {
-                    "name": "Name_8",
-                    "deadline": null,
-                    "position": 4,
-                    "done": false
-                  },
-                  "relationships": {
-                    "project": {
-                      "data": {
-                        "id": "1088",
-                        "type": "project"
-                      }
-                    },
-                    "comments": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
+            "description": "update Task position"
           },
           "422": {
-            "description": "invalid params",
-            "examples": {
-              "application/json": {
-                "errors": [
-
-                ]
-              }
-            }
+            "description": "invalid params"
           }
         }
       }
@@ -400,63 +228,10 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of Projects",
-            "examples": {
-              "application/json": {
-                "data": [
-                  {
-                    "id": "1090",
-                    "type": "project",
-                    "attributes": {
-                      "name": "Name_10"
-                    },
-                    "relationships": {
-                      "user": {
-                        "data": {
-                          "id": "1227",
-                          "type": "user"
-                        }
-                      },
-                      "tasks": {
-                        "data": [
-
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "id": "1091",
-                    "type": "project",
-                    "attributes": {
-                      "name": "Name_11"
-                    },
-                    "relationships": {
-                      "user": {
-                        "data": {
-                          "id": "1227",
-                          "type": "user"
-                        }
-                      },
-                      "tasks": {
-                        "data": [
-
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
+            "description": "A list of Projects"
           },
           "401": {
-            "description": "not authorized",
-            "examples": {
-              "application/json": {
-                "errors": [
-                  "You need to sign in or sign up before continuing."
-                ]
-              }
-            }
+            "description": "not authorized"
           }
         }
       },
@@ -477,39 +252,10 @@
         ],
         "responses": {
           "201": {
-            "description": "Create a Project",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "1092",
-                  "type": "project",
-                  "attributes": {
-                    "name": "Project"
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "1228",
-                        "type": "user"
-                      }
-                    },
-                    "tasks": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Create a Project"
           },
           "400": {
-            "description": "wrong params",
-            "examples": {
-              "application/json": {
-                "error": "Bad request"
-              }
-            }
+            "description": "wrong params"
           }
         }
       }
@@ -530,41 +276,10 @@
         ],
         "responses": {
           "200": {
-            "description": "A Project",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "1093",
-                  "type": "project",
-                  "attributes": {
-                    "name": "Name_12"
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "1230",
-                        "type": "user"
-                      }
-                    },
-                    "tasks": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
+            "description": "A Project"
           },
           "401": {
-            "description": "not authorized",
-            "examples": {
-              "application/json": {
-                "errors": [
-                  "You need to sign in or sign up before continuing."
-                ]
-              }
-            }
+            "description": "not authorized"
           }
         }
       },
@@ -591,31 +306,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Update the Project",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "1094",
-                  "type": "project",
-                  "attributes": {
-                    "name": "New Project"
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "1231",
-                        "type": "user"
-                      }
-                    },
-                    "tasks": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Update the Project"
           }
         }
       },
@@ -637,14 +328,7 @@
             "description": "deleted project"
           },
           "401": {
-            "description": "not authorized",
-            "examples": {
-              "application/json": {
-                "errors": [
-                  "You need to sign in or sign up before continuing."
-                ]
-              }
-            }
+            "description": "not authorized"
           }
         }
       }
@@ -665,82 +349,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of Tasks",
-            "examples": {
-              "application/json": {
-                "data": [
-                  {
-                    "id": "976",
-                    "type": "task",
-                    "attributes": {
-                      "name": "Name_10",
-                      "deadline": null,
-                      "position": 1,
-                      "done": false
-                    },
-                    "relationships": {
-                      "project": {
-                        "data": {
-                          "id": "1096",
-                          "type": "project"
-                        }
-                      },
-                      "comments": {
-                        "data": [
-
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "id": "978",
-                    "type": "task",
-                    "attributes": {
-                      "name": "Name_12",
-                      "deadline": null,
-                      "position": 2,
-                      "done": false
-                    },
-                    "relationships": {
-                      "project": {
-                        "data": {
-                          "id": "1096",
-                          "type": "project"
-                        }
-                      },
-                      "comments": {
-                        "data": [
-
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "id": "979",
-                    "type": "task",
-                    "attributes": {
-                      "name": "Name_13",
-                      "deadline": null,
-                      "position": 3,
-                      "done": false
-                    },
-                    "relationships": {
-                      "project": {
-                        "data": {
-                          "id": "1096",
-                          "type": "project"
-                        }
-                      },
-                      "comments": {
-                        "data": [
-
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
+            "description": "A list of Tasks"
           }
         }
       },
@@ -767,42 +376,10 @@
         ],
         "responses": {
           "201": {
-            "description": "create a Task",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "982",
-                  "type": "task",
-                  "attributes": {
-                    "name": "Project",
-                    "deadline": null,
-                    "position": 2,
-                    "done": false
-                  },
-                  "relationships": {
-                    "project": {
-                      "data": {
-                        "id": "1098",
-                        "type": "project"
-                      }
-                    },
-                    "comments": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
+            "description": "create a Task"
           },
           "400": {
-            "description": "invalid params",
-            "examples": {
-              "application/json": {
-                "error": "Bad request"
-              }
-            }
+            "description": "invalid params"
           }
         }
       }
@@ -823,42 +400,10 @@
         ],
         "responses": {
           "200": {
-            "description": "show a Task",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "985",
-                  "type": "task",
-                  "attributes": {
-                    "name": "Name_18",
-                    "deadline": null,
-                    "position": 1,
-                    "done": false
-                  },
-                  "relationships": {
-                    "project": {
-                      "data": {
-                        "id": "1102",
-                        "type": "project"
-                      }
-                    },
-                    "comments": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
+            "description": "show a Task"
           },
           "403": {
-            "description": "unauthorized",
-            "examples": {
-              "application/json": {
-                "error": "Access Denied"
-              }
-            }
+            "description": "unauthorized"
           }
         }
       },
@@ -900,42 +445,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Update the Task",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": "989",
-                  "type": "task",
-                  "attributes": {
-                    "name": "New Task",
-                    "deadline": null,
-                    "position": 1,
-                    "done": false
-                  },
-                  "relationships": {
-                    "project": {
-                      "data": {
-                        "id": "1106",
-                        "type": "project"
-                      }
-                    },
-                    "comments": {
-                      "data": [
-
-                      ]
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Update the Task"
           },
           "403": {
-            "description": "unauthorized",
-            "examples": {
-              "application/json": {
-                "error": "Access Denied"
-              }
-            }
+            "description": "unauthorized"
           }
         }
       },
@@ -957,12 +470,7 @@
             "description": "deleted task"
           },
           "403": {
-            "description": "unauthorized",
-            "examples": {
-              "application/json": {
-                "error": "Access Denied"
-              }
-            }
+            "description": "unauthorized"
           }
         }
       }
@@ -992,28 +500,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Sign In",
-            "examples": {
-              "application/json": {
-                "data": {
-                  "id": 1251,
-                  "email": "person_34@example.com",
-                  "provider": "email",
-                  "uid": "person_34@example.com"
-                }
-              }
-            }
+            "description": "Sign In"
           },
           "401": {
-            "description": "Invalid login credentials",
-            "examples": {
-              "application/json": {
-                "success": false,
-                "errors": [
-                  "Invalid login credentials. Please try again."
-                ]
-              }
-            }
+            "description": "Invalid login credentials"
           }
         }
       }
@@ -1048,23 +538,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Sign Out",
-            "examples": {
-              "application/json": {
-                "success": true
-              }
-            }
+            "description": "Sign Out"
           },
           "404": {
-            "description": "User was not found or was not logged in",
-            "examples": {
-              "application/json": {
-                "success": false,
-                "errors": [
-                  "User was not found or was not logged in."
-                ]
-              }
-            }
+            "description": "User was not found or was not logged in"
           }
         }
       }
@@ -1097,44 +574,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Registration",
-            "examples": {
-              "application/json": {
-                "status": "success",
-                "data": {
-                  "id": 1255,
-                  "provider": "email",
-                  "uid": "person_38@example.com",
-                  "email": "person_38@example.com",
-                  "created_at": "2019-11-04T10:08:15.968Z",
-                  "updated_at": "2019-11-04T10:08:15.973Z"
-                }
-              }
-            }
+            "description": "Registration"
           },
           "422": {
-            "description": "Invalid request",
-            "examples": {
-              "application/json": {
-                "status": "error",
-                "data": {
-                  "id": null,
-                  "provider": "email",
-                  "uid": "",
-                  "email": "1111",
-                  "created_at": null,
-                  "updated_at": null
-                },
-                "errors": {
-                  "email": [
-                    "is not an email"
-                  ],
-                  "full_messages": [
-                    "Email is not an email"
-                  ]
-                }
-              }
-            }
+            "description": "Invalid request"
           }
         }
       }
