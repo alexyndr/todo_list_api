@@ -3,10 +3,8 @@
 Rails.application.routes.draw do
   devise_for :users, skip: :all
 
-  # mount Rswag::Ui::Engine, at: :apidoc
-
-  mount Rswag::Api::Engine => "api-docs"
-  mount Rswag::Ui::Engine => "api-docs"
+  mount Rswag::Ui::Engine,  at: :apidoc
+  mount Rswag::Api::Engine, at: :apidoc
 
   namespace :api do
     namespace :v1 do
